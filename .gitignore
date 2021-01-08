@@ -4,3 +4,4 @@ build*
 *.json
 priconfig.xml
 resources.pri
+microsoft*
