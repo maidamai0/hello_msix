@@ -5,3 +5,8 @@ build*
 priconfig.xml
 resources.pri
 microsoft*
+*.exe
+*.dll
+*.ilk
+*.pdb
+*.msix

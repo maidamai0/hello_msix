@@ -19,7 +19,7 @@
         <rescap:Capability Name="runFullTrust"/>
     </Capabilities>
     <Applications>
-        <Application Id="HelloMSIX" Executable="build/hello_msix.exe" EntryPoint="Windows.FullTrustApplication">
+        <Application Id="HelloMSIX" Executable="hello_msix.exe" EntryPoint="Windows.FullTrustApplication">
             <uap:VisualElements DisplayName="Hello MSIX" Description="MSIX hello world" Square150x150Logo="images/logo_256.png" Square44x44Logo="images/logo.png" BackgroundColor="#464646" />
         </Application>
     </Applications>
