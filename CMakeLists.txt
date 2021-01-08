@@ -16,7 +16,7 @@ add_custom_target(
     USES_TERMINAL
 )
 
-# Install with develop mode
+# Install with develop mode in powershell
 # Add-AppxPackage -Register AppxManifest.xml
 
 # remove

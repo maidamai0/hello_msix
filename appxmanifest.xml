@@ -2,10 +2,10 @@
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
     xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
     xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
-    <Identity Name="CarestremDental.Scanflow.hello" Version="1.0.0.0" Publisher="CN=CarestreamDental, O=CarestreamDental, L=Shanghai, S=Shanghai, C=China" ProcessorArchitecture="x64" />
+    <Identity Name="Tonghao.Yuan.hello" Version="1.0.0.0" Publisher="CN=Tonghao, O=Tonghao, L=Shanghai, S=Shanghai, C=China" ProcessorArchitecture="x64" />
     <Properties>
         <DisplayName>Hello MSIX</DisplayName>
-        <PublisherDisplayName>CarestreamDental</PublisherDisplayName>
+        <PublisherDisplayName>Tonghao</PublisherDisplayName>
         <Description>hello world for creating an .msix from c++ code</Description>
         <Logo>images/logo.png</Logo>
     </Properties>

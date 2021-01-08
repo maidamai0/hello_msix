@@ -22,12 +22,22 @@ ExpirationTime        IsValid
 12/31/9999 8:00:00 AM    True
 ```
 
-## Steps
+## Minimum steps to package you code
 
 1. Build a cpp executable.
 2. Create an `appxmanifest.xml` file
 3. Fill the required information in `appxmanifest.xml` file follow the official document
 4. Generate the resource files with **PowerSehll** `Appx` module
+
+## How to run this code
+
+* build the executables with cmake
+  
+  ```cmd
+  mkdir build && cd build && cmake ..
+  ```
+
+* Install the app follow the next section
 
 ## Install/Uninstall
 
