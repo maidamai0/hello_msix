@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+namespace signal {
+
 BOOL WINAPI consoleHandler(DWORD signal) {
   if (signal == CTRL_C_EVENT)
     printf("Ctrl-C handled\n"); // do cleanup
@@ -12,3 +14,5 @@ BOOL WINAPI consoleHandler(DWORD signal) {
 }
 
 void CatcureSignal() { SetConsoleCtrlHandler(consoleHandler, TRUE); }
+
+} // namespace signal
