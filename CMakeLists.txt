@@ -38,7 +38,7 @@ add_custom_target(
 # Add-AppxPackage -Register AppxManifest.xml
 
 # remove
-# Remove-AppxPackage -Package "CarestremDental.Scanflow.hello_1.0.0.0_x64__kffgs02sz7ag2"
+# Remove-AppxPackage -Package "Tonghao.Yuan.hello_nqywa46cgs0va"
 
 # package
 # makeappx pack -v -d pack -p hello.msix -o

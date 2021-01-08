@@ -7,8 +7,7 @@
 namespace file {
 
 const auto full_path = "C:\\ProgramData\\TW\\AcqAltair\\appx.txt";
-const auto file_content =
-    R"(This is a test for msix from carestreamdental.scanflow.hello)";
+const auto file_content = R"(This is a test for msix from Tonghao.Yuan.hello)";
 
 void WriteToFile() {
   std::cout << "test for writing to file:" << full_path << std::endl;
