@@ -26,4 +26,43 @@ ExpirationTime        IsValid
 
 1. Build a cpp executable.
 2. Create an `appxmanifest.xml` file
-3. Fill the required information in `appxmanifest.xml` file follow the offical document
+3. Fill the required information in `appxmanifest.xml` file follow the official document
+4. Generate the resource files with **PowerSehll** `Appx` module
+
+## Install/Uninstall
+
+* Install:
+
+  ```powershell
+  Add-AppxPackage -Register AppxManifest.xml
+  ```
+
+* Get installed package:
+
+  ```powershell
+  ❯ Get-AppxPackage -Name CarestremDental.Scanflow.hello
+
+  Name              : CarestremDental.Scanflow.hello
+  Publisher         : CN=CarestreamDental, O=CarestreamDental, L=Shanghai, S=Shanghai, C=China
+  Architecture      : X64
+  ResourceId        :
+  Version           : 1.0.0.0
+  PackageFullName   : CarestremDental.Scanflow.hello_1.0.0.0_x64__kffgs02sz7ag2
+  InstallLocation   : D:\csd\msix
+  IsFramework       : False
+  PackageFamilyName : CarestremDental.Scanflow.hello_kffgs02sz7ag2
+  PublisherId       : kffgs02sz7ag2
+  IsResourcePackage : False
+  IsBundle          : False
+  IsDevelopmentMode : True
+  NonRemovable      : False
+  IsPartiallyStaged : False
+  SignatureKind     : None
+  Status            : Ok
+  ```
+
+* Uninstall:
+
+  ```powershell
+  Remove-AppxPackage -Package "CarestremDental.Scanflow.hello_1.0.0.0_x64__kffgs02sz7ag2"
+  ```
