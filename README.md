@@ -50,18 +50,18 @@ ExpirationTime        IsValid
 * Get installed package:
 
   ```powershell
-  ❯ Get-AppxPackage -Name CarestremDental.Scanflow.hello
+  ❯ Get-AppxPackage -Name Tonghao.Yuan.hello
 
-  Name              : CarestremDental.Scanflow.hello
-  Publisher         : CN=CarestreamDental, O=CarestreamDental, L=Shanghai, S=Shanghai, C=China
+  Name              : Tonghao.Yuan.hello
+  Publisher         : CN=Tonghao, O=Tonghao, L=Shanghai, S=Shanghai, C=China
   Architecture      : X64
   ResourceId        :
   Version           : 1.0.0.0
-  PackageFullName   : CarestremDental.Scanflow.hello_1.0.0.0_x64__kffgs02sz7ag2
-  InstallLocation   : D:\csd\msix
+  PackageFullName   : Tonghao.Yuan.hello_1.0.0.0_x64__nqywa46cgs0va
+  InstallLocation   : D:\csd\msix\pack
   IsFramework       : False
-  PackageFamilyName : CarestremDental.Scanflow.hello_kffgs02sz7ag2
-  PublisherId       : kffgs02sz7ag2
+  PackageFamilyName : Tonghao.Yuan.hello_nqywa46cgs0va
+  PublisherId       : nqywa46cgs0va
   IsResourcePackage : False
   IsBundle          : False
   IsDevelopmentMode : True
@@ -74,5 +74,5 @@ ExpirationTime        IsValid
 * Uninstall:
 
   ```powershell
-  Remove-AppxPackage -Package "CarestremDental.Scanflow.hello_1.0.0.0_x64__kffgs02sz7ag2"
+  Remove-AppxPackage -Package "Tonghao.Yuan.hello_nqywa46cgs0va"
   ```

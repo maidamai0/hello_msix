@@ -25,7 +25,7 @@ add_custom_target(
 add_custom_target(
     package
     ALL
-    COMMAND makeappx pack -v -d pack -p hello.msix -o
+    COMMAND makeappx pack -v -nv -nfv -d pack -p hello.msix -o
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     DEPENDS generate_resource
     COMMENT "packag..."
