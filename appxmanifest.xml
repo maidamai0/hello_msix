@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+    xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+    xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
+    <Identity Name="CarestremDental.Scanflow.hello" Version="1.0.0.0" Publisher="CN=CarestreamDental, O=CarestreamDental, L=Shanghai, S=Shanghai, C=China" ProcessorArchitecture="x64" />
+    <Properties>
+        <DisplayName>Hello MSIX</DisplayName>
+        <PublisherDisplayName>CarestreamDental</PublisherDisplayName>
+        <Description>hello world for creating an .msix from c++ code</Description>
+        <Logo>images/logo.png</Logo>
+    </Properties>
+    <Resources>
+        <Resource Language="en-us" />
+    </Resources>
+    <Dependencies>
+        <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14316.0" MaxVersionTested="10.0.15063.0" />
+    </Dependencies>
+    <Capabilities>
+        <rescap:Capability Name="runFullTrust"/>
+    </Capabilities>
+    <Applications>
+        <Application Id="HelloMSIX" Executable="hello_msix.exe" EntryPoint="Windows.FullTrustApplication">
+            <uap:VisualElements DisplayName="Hello MSIX" Description="MSIX hello world" Square150x150Logo="images/logo_256.png" Square44x44Logo="images/logo.png" BackgroundColor="#464646" />
+        </Application>
+    </Applications>
+</Package>

@@ -1,0 +1,6 @@
+.clangd
+.vscode
+build*
+*.json
+priconfig.xml
+resources.pri
