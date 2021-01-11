@@ -93,7 +93,9 @@ SignTool sign /fd SHA256 hello.msix
 
 You should now see the installer *hello.msix* in the root directory and install the app by double click the *hello.msxi*
 
-## Install/Uninstall before packing(test only, not requrired by packing)
+![installer](doc/installer.png)
+
+## Install/Uninstall before packing(test only, not required by packing)
 
 * Install:
 
