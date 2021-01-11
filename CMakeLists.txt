@@ -5,6 +5,13 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pack)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pack)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pack)
 
+set(CXX_STANDARD 20)
+
+# don't know why set(CXX_STANDARD 20) don't work on my machine:msvc-2019 build tools
+if(MSVC)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++latest")
+endif(MSVC)
+
 add_executable(hello_msix src/main.cpp)
 
 # generate resource  file

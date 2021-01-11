@@ -1,5 +1,6 @@
 #pragma once
 
+#include <filesystem>
 #include <iostream>
 #include <string>
 
@@ -13,6 +14,13 @@ public:
     std::cout << "Local appdata             :" << GetAppDataPath() << std::endl;
     std::cout << "Local appdata(container)  :" << GetRedirectAppDataPath()
               << std::endl;
+
+    std::cout << "Current directory from std:"
+              << std::filesystem::current_path() << std::endl;
+
+    std::cout << "Current directory from win:" << get_current_directory()
+              << std::endl;
+    ;
   }
 
   std::string static GetAppDataPath() {
@@ -43,5 +51,17 @@ private:
     WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.length(), &str_to[0],
                         size_needed, NULL, NULL);
     return str_to;
+  }
+
+  static std::string get_current_directory() {
+    TCHAR buffer[MAX_PATH];
+    DWORD dwRet = GetCurrentDirectory(MAX_PATH, buffer);
+
+    if (dwRet == 0) {
+      std::cerr << "GetCurrentDirectory failed" << std::endl;
+      return {};
+    }
+
+    return std::string(buffer);
   }
 };
