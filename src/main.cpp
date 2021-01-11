@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "file.hpp"
+#include "path.hpp"
 #include "signal.hpp"
 
 int main() {
@@ -8,11 +9,11 @@ int main() {
 
   std::cout << "Hello, this app is installed with msix" << std::endl;
 
-  // test write to file
-  file::WriteToFile();
+  // test path
+  path::RunTest();
 
-  // test read file
-  file::ReadFile();
+  // test file
+  file::RunTest();
 
   std::cin.get();
 }

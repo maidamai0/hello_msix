@@ -4,40 +4,59 @@
 #include <iostream>
 #include <sstream>
 
-namespace file {
+#include "path.hpp"
 
-const auto full_path = "C:\\Program Files\\msix.txt";
+namespace {
+const auto file_name = "msix.txt";
 const auto file_content = R"(This is a test for msix from Tonghao.Yuan.hello)";
+} // namespace
 
-void WriteToFile() {
-  std::cout << "test for writing to file:" << full_path << std::endl;
-  std::ofstream test_file(full_path);
-  if (!test_file.is_open()) {
-    std::cerr << "can't open " << full_path << std::endl;
+class file {
+
+public:
+  static void RunTest() {
+    std::cout << "\nFile test:" << std::endl;
+    Test(path::GetAppDataPath());
+    Test(path::GetRedirectAppDataPath());
   }
 
-  test_file << file_content;
-
-  std::cout << "write file completed" << std::endl;
-}
-
-void ReadFile() {
-  std::cout << "test for reading file:" << full_path << std::endl;
-  std::ifstream test_file(full_path);
-  if (!test_file.is_open()) {
-    std::cerr << "can't open " << full_path << std::endl;
+private:
+  static void Test(std::string &&path) {
+    const auto full_path = path + "\\" + file_name;
+    WriteToFile(full_path);
+    ReadFile(full_path);
   }
 
-  std::stringstream ss;
-  while (test_file >> ss.rdbuf()) {
-    // do nothing
+  void static WriteToFile(const std::string &full_path) {
+    std::cout << "test for writing to file:" << full_path;
+    std::ofstream test_file(full_path);
+    if (!test_file.is_open()) {
+      std::cerr << ", open failed" << std::endl;
+      return;
+    }
+
+    test_file << file_content;
+
+    std::cout << ", completed" << std::endl;
   }
 
-  if (ss.str() == file_content) {
-    std::cout << "passed" << std::endl;
-  } else {
-    std::cerr << "failed" << std::endl;
-  }
-}
+  void static ReadFile(const std::string &full_path) {
+    std::cout << "test for reading file:" << full_path;
+    std::ifstream test_file(full_path);
+    if (!test_file.is_open()) {
+      std::cerr << ", open failed" << std::endl;
+      return;
+    }
 
-} // namespace file
+    std::stringstream ss;
+    while (test_file >> ss.rdbuf()) {
+      // do nothing
+    }
+
+    if (ss.str() == file_content) {
+      std::cout << ", passed" << std::endl;
+    } else {
+      std::cerr << ", failed" << std::endl;
+    }
+  }
+};
