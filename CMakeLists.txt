@@ -8,9 +8,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pack)
 add_executable(hello_msix main.cpp)
 
 # generate resource  file
+# test only, not required to package
 add_custom_target(
     generate_resource
-    ALL
     COMMAND makepri createconfig /cf priconfig.xml /dq en-US /o
     COMMAND makepri new /pr . /cf priconfig.xml /o
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -20,25 +20,14 @@ add_custom_target(
     USES_TERMINAL
 )
 
-
-# generate resource  file
+# pack and sign app
 add_custom_target(
-    package
+    package_and_sign
     ALL
-    COMMAND makeappx pack -v -nv -nfv -d pack -p hello.msix -o
+    COMMAND makeappx pack -v -d pack -p hello.msix -o
+    COMMAND SignTool sign /fd SHA256 hello.msix
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DEPENDS generate_resource
-    COMMENT "packag..."
+    COMMENT "package and sign app..."
     VERBATIM
     USES_TERMINAL
 )
-
-
-# Install with develop mode in powershell
-# Add-AppxPackage -Register AppxManifest.xml
-
-# remove
-# Remove-AppxPackage -Package "Tonghao.Yuan.hello_nqywa46cgs0va"
-
-# package
-# makeappx pack -v -d pack -p hello.msix -o

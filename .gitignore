@@ -10,3 +10,4 @@ microsoft*
 *.ilk
 *.pdb
 *.msix
+*.pfx
