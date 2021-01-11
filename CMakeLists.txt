@@ -5,7 +5,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pack)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pack)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pack)
 
-add_executable(hello_msix main.cpp)
+add_executable(hello_msix src/main.cpp)
 
 # generate resource  file
 # test only, not required to package
@@ -27,6 +27,7 @@ add_custom_target(
     COMMAND makeappx pack -v -d pack -p hello.msix -o
     COMMAND SignTool sign /fd SHA256 hello.msix
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    DEPENDS hello_msix
     COMMENT "package and sign app..."
     VERBATIM
     USES_TERMINAL
