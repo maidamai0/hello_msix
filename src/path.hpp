@@ -23,7 +23,7 @@ public:
     std::cout << "Current directory from win:" << get_current_directory()
               << std::endl;
 
-    std::cout << "Current directory from exe:" << get_executable_directory()
+    std::cout << "Current directory from exe:" << GetExecutableDirectory()
               << std::endl;
 
     std::cout << "read modification_test: " << read_modification_test()
@@ -68,6 +68,18 @@ public:
     return ret;
   }
 
+  static std::string GetExecutableDirectory() {
+    TCHAR buffer[MAX_PATH];
+    DWORD dwRet = GetModuleFileName(NULL, buffer, sizeof(buffer));
+
+    if (dwRet == 0) {
+      std::cerr << "GetCurrentDirectory failed" << std::endl;
+      return {};
+    }
+
+    return std::filesystem::path(buffer).parent_path().string();
+  }
+
 private:
   static std::string Ws2s(std::wstring &&wstr) {
     int size_needed = WideCharToMultiByte(CP_UTF8, 0, &wstr[0],
@@ -88,18 +100,6 @@ private:
     }
 
     return std::string(buffer);
-  }
-
-  static std::string get_executable_directory() {
-    TCHAR buffer[MAX_PATH];
-    DWORD dwRet = GetModuleFileName(NULL, buffer, sizeof(buffer));
-
-    if (dwRet == 0) {
-      std::cerr << "GetCurrentDirectory failed" << std::endl;
-      return {};
-    }
-
-    return std::filesystem::path(buffer).parent_path().string();
   }
 
   static std::string read_modification_test() {
