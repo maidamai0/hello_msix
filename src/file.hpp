@@ -18,6 +18,8 @@ public:
     std::cout << "\nFile test:" << std::endl;
     Test(path::GetAppDataPath());
     Test(path::GetRedirectAppDataPath());
+    Test(path::GetProgramDataPath());
+    Test(path::GetRedirectProgramDataPath());
   }
 
 private:
@@ -29,13 +31,13 @@ private:
 
   void static WriteToFile(const std::string &full_path) {
     std::cout << "test for writing to file:" << full_path;
-    std::ofstream test_file(full_path);
+    std::ofstream test_file(full_path, std::fstream::app | std::fstream::out);
     if (!test_file.is_open()) {
       std::cerr << ", open failed" << std::endl;
       return;
     }
 
-    test_file << file_content;
+    test_file << file_content << " path:" << full_path << std::endl;
 
     std::cout << ", completed" << std::endl;
   }

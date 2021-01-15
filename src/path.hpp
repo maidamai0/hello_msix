@@ -1,7 +1,9 @@
 #pragma once
 
 #include <filesystem>
+#include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 #include <ShlObj_core.h>
@@ -20,25 +22,48 @@ public:
 
     std::cout << "Current directory from win:" << get_current_directory()
               << std::endl;
-    ;
+
+    std::cout << "Current directory from exe:" << get_executable_directory()
+              << std::endl;
+
+    std::cout << "read modification_test: " << read_modification_test()
+              << std::endl;
   }
 
   std::string static GetAppDataPath() {
-    PWSTR local_appdata = {};
-    SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, 0, &local_appdata);
-    std::string ret = Ws2s(std::wstring(local_appdata));
-    CoTaskMemFree(local_appdata);
+    PWSTR dest_path = {};
+    SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, 0, &dest_path);
+    std::string ret = Ws2s(std::wstring(dest_path));
+    CoTaskMemFree(dest_path);
 
     return ret;
   }
 
   std::string static GetRedirectAppDataPath() {
-    PWSTR local_appdata = {};
+    PWSTR dest_path = {};
     SHGetKnownFolderPath(FOLDERID_LocalAppData,
-                         KF_FLAG_FORCE_APPCONTAINER_REDIRECTION, 0,
-                         &local_appdata);
-    std::string ret = Ws2s(std::wstring(local_appdata));
-    CoTaskMemFree(local_appdata);
+                         KF_FLAG_FORCE_APPCONTAINER_REDIRECTION, 0, &dest_path);
+    std::string ret = Ws2s(std::wstring(dest_path));
+    CoTaskMemFree(dest_path);
+
+    return ret;
+  }
+
+  std::string static GetProgramDataPath() {
+    PWSTR dest_path = {};
+    SHGetKnownFolderPath(FOLDERID_ProgramData, 0, 0, &dest_path);
+    std::string ret = Ws2s(std::wstring(dest_path));
+    CoTaskMemFree(dest_path);
+
+    return ret;
+  }
+
+  std::string static GetRedirectProgramDataPath() {
+    PWSTR dest_path = {};
+    SHGetKnownFolderPath(FOLDERID_ProgramData,
+                         KF_FLAG_FORCE_APPCONTAINER_REDIRECTION, 0, &dest_path);
+    std::string ret = Ws2s(std::wstring(dest_path));
+    CoTaskMemFree(dest_path);
 
     return ret;
   }
@@ -63,5 +88,30 @@ private:
     }
 
     return std::string(buffer);
+  }
+
+  static std::string get_executable_directory() {
+    TCHAR buffer[MAX_PATH];
+    DWORD dwRet = GetModuleFileName(NULL, buffer, sizeof(buffer));
+
+    if (dwRet == 0) {
+      std::cerr << "GetCurrentDirectory failed" << std::endl;
+      return {};
+    }
+
+    return std::filesystem::path(buffer).parent_path().string();
+  }
+
+  static std::string read_modification_test() {
+    std::ifstream file("modification_test");
+    if (!file.is_open()) {
+      return {"open failed"};
+    }
+
+    std::stringstream ss;
+    while (file >> ss.rdbuf()) {
+    }
+
+    return ss.str();
   }
 };
