@@ -4,6 +4,7 @@
 #include "first_run.hpp"
 #include "path.hpp"
 #include "signal.hpp"
+#include "winrt.hpp"
 
 int main() {
   signal::CatcureSignal();
@@ -18,6 +19,9 @@ int main() {
 
   // preparation
   FirstRun::Run();
+
+  // WinRT
+  WinRT::Run();
 
   std::cin.get();
 }

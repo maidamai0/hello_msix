@@ -14,6 +14,9 @@ endif(MSVC)
 
 add_executable(hello_msix src/main.cpp)
 
+# For winrt
+target_link_libraries(hello_msix PRIVATE WindowsApp)
+
 # generate resource  file
 # test only, not required to package
 add_custom_target(

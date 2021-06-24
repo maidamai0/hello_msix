@@ -7,7 +7,7 @@
 class FirstRun {
 public:
   static void Run() {
-    std::cout << "\nFitstRun test:\n";
+    std::cout << "\nFirstRun test:\n";
     copy_data();
   }
 
